@@ -1,0 +1,3 @@
+word = input("Sisesta midagi: ")
+word = word.title()
+print(word)
