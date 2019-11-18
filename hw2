@@ -1,0 +1,9 @@
+nr = int(input("Sisesta täisarv: "))
+
+if nr%2 == 0:
+    if nr >= 2 and nr <= 5 or nr >= 20:
+        print("sobib")
+    else:
+        print("ei sobi")
+else:
+    print("ei sobi")
