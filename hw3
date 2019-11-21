@@ -1,0 +1,8 @@
+nr1 = int(input("Sisesta arv: "))
+nr2 = int(input("Sisesta teine arv: "))
+nr3 = int(input("Sisesta kolmas arv: "))
+
+if nr1 == nr2 == nr3:
+    print(str(nr1**3))
+else:
+    print(str(nr1 + nr2 + nr3))
