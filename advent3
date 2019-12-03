@@ -1,0 +1,92 @@
+l1 = ["R8", "U5", "L5", "D3"]
+l2 = ["U7", "R6", "D4", "L4"]
+grid = [["." for i in range(11)] for i in range(10)]
+pos = [8, 1]
+grid[pos[0]][pos[1]] = "o"
+crosses = []
+
+def drawWire(dire, dist, check):
+  if dire == 'R':
+    for i in range(dist):
+      if i + 1 == dist and check == False:
+        grid[pos[0]][pos[1] + i + 1] = '+'
+        pos[1] = pos[1] + i + 1
+      elif grid[pos[0]][pos[1] + i + 1] != 'o' or '+':
+        if grid[pos[0]][pos[1] + i + 1] == '|':
+          grid[pos[0]][pos[1] + i + 1] = 'X'
+          crosses.append([pos[0], pos[1] + i + 1])
+        else:
+          grid[pos[0]][pos[1] + i + 1] = '-'
+      else:
+        print('error')
+  elif dire == 'L':
+    for i in range(dist):
+      if i + 1 == dist and check == False:
+        grid[pos[0]][pos[1] - i - 1] = '+'
+        pos[1] = pos[1] - i - 1
+      elif grid[pos[0]][pos[1] - i - 1] != 'o' or '+':
+        if grid[pos[0]][pos[1] - i - 1] == '|':
+          grid[pos[0]][pos[1] - i - 1] = 'X'
+          crosses.append([pos[0], pos[1] - i - 1])
+        else:
+          grid[pos[0]][pos[1] - i - 1] = '-'
+      else:
+        print('error')
+  elif dire == 'D':
+    for i in range(dist):
+      if i + 1 == dist and check == False:
+        grid[pos[0] + i + 1][pos[1]] = '+'
+        pos[0] = pos[0] + i + 1
+      elif grid[pos[0] + i + 1][pos[1]] != 'o' or '+':
+        if grid[pos[0] + i + 1][pos[1]] == '-':
+          grid[pos[0] + i + 1][pos[1]] = 'X'
+          crosses.append([pos[0] + i + 1, pos[1]])
+        else:
+          grid[pos[0] + i + 1][pos[1]] = '|'
+      else:
+        print('error')
+  elif dire == 'U':
+    for i in range(dist):
+      if i + 1 == dist and check == False:
+        grid[pos[0] - i - 1][pos[1]] = '+'
+        pos[0] = pos[0] - i - 1
+      elif grid[pos[0] - i - 1][pos[1]] != 'o' or '+':
+        if grid[pos[0] - i - 1][pos[1]] == '-':
+          grid[pos[0] - i - 1][pos[1]] = 'X'
+          crosses.append([pos[0] - i - 1, pos[1]])
+        else:
+          grid[pos[0] - i - 1][pos[1]] = '|'
+      else:
+        print('error')
+  else:
+    print('error')
+  if check == True:
+    pos[0] = 8
+    pos[1] = 1
+
+for i in range(len(l1)):
+  dire = l1[i][0]
+  dist = int(l1[i][1:])
+  check = False
+  if i + 1 == len(l1):
+    check = True
+  drawWire(dire, dist, check)
+
+for i in range(len(l2)):
+  dire = l2[i][0]
+  dist = int(l2[i][1:])
+  check = False
+  if i + 1 == len(l2):
+    check = True
+  drawWire(dire, dist, check)
+
+for i in range(len(grid)):
+  for j in range(len(grid[i])):
+    print(grid[i][j], end = ' ')
+  print('\n')
+
+print(crosses)
+x = abs(crosses[0][0] - pos[0]) + abs(crosses[0][1] - pos[1])
+y = abs(crosses[1][0] - pos[0]) + abs(crosses[1][1] - pos[1])
+print(x)
+print(y)
