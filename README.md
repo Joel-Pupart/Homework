@@ -1,3 +1,3 @@
 # Homework
 
-Kodutööd ja muud kooliga seonduvar harjutuste failid
+Kodutööd ja muud kooliga seonduvad harjutuste failid
