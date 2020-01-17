@@ -1,0 +1,24 @@
+def selection_sort (lst):
+    for i in range(len(lst)):
+        minimal = [lst[i], i]
+        for j in range(len(lst[i:])):
+            if lst[j + i] < minimal[0]:
+                minimal = [lst[j + i], j + i] 
+        lst[i], lst[minimal[1]] = lst[minimal[1]], lst[i]
+    return lst
+
+
+def selection_sort2 (lst):
+    for i in range(len(lst)):
+        minimal = lst[i]
+        for j in range(len(lst[i:])):
+            if lst[j + i] < minimal:
+                minimal = j + i
+        lst[i], lst[minimal] = lst[minimal], lst[i]
+    return lst
+    
+
+unSortedList = [1, 6, 7, 0, 2, -5, 14, 8]
+
+print(selection_sort(unSortedList))
+print(selection_sort2(unSortedList))
