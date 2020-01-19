@@ -10,11 +10,12 @@ def selection_sort (lst):
 
 def selection_sort2 (lst):
     for i in range(len(lst)):
-        minimal = lst[i]
+        minEl = lst[i]
+        minIndex = i
         for j in range(len(lst[i:])):
-            if lst[j + i] < minimal:
-                minimal = j + i
-        lst[i], lst[minimal] = lst[minimal], lst[i]
+            if lst[j + i] < minEl:
+                minIndex = j + i
+        lst[i], lst[minIndex] = lst[minIndex], lst[i]
     return lst
     
 
